@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book a Room</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='CSS/bookstyles.css') }}">
+</head>
+<body>
+    <header class="header-banner">
+        <div class="header-content">
+            <h1>Book A Room</h1>
+        </div>
+    </header>
+    <form action="{{ url_for('book') }}" method="POST">
+        <input type="hidden" name="room_name" value="{{ room_name }}">
+        <input type="hidden" name="room_price" value="{{ room_price }}">
+        
+        <label for="start_date">Start Date:</label>
+        <input type="date" id="start_date" name="start_date" required onchange="calculateTotal()">
+        <br>
+        
+        <label for="end_date">End Date:</label>
+        <input type="date" id="end_date" name="end_date" required onchange="calculateTotal()">
+        <br>
+        
+        <p>Room: {{ room_name }}</p>
+        <p>Price per night: ${{ room_price }}</p>
+        
+        <p id="total_cost">Total Cost: </p>
+        
+        <button type="submit" class="button-link back-button">Confirm Booking</button>
+    </form>
+    
+    <script>
+    function calculateTotal() {
+        const startDateInput = document.getElementById('start_date');
+        const endDateInput = document.getElementById('end_date');
+        const pricePerNight = parseFloat(document.querySelector('input[name="room_price"]').value);
+        
+        const startDate = new Date(startDateInput.value);
+        const endDate = new Date(endDateInput.value);
+        
+        if (startDate && endDate && endDate > startDate) {
+            const timeDiff = endDate - startDate;
+            const nights = Math.ceil(timeDiff / (1000 * 3600 * 24));
+            const totalCost = nights * pricePerNight;
+            
+            document.getElementById('total_cost').innerText = `Total Cost: $${totalCost.toFixed(2)}`;
+        } else {
+            document.getElementById('total_cost').innerText = 'Total Cost: 0.00 euros';
+        }
+    }
+    </script>
+    
+    <a href="{{ url_for('overview') }}" class="button-link back-button">Back to Accommodations</a>
+</body>
+</html>

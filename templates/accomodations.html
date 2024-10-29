@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Accommodations</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='CSS/accommodationstyle.css') }}">
+</head>
+<body>
+    <header class="header-banner">
+        <div class="header-content">
+            <h1>Family Water Park Accommodations</h1>
+                <nav class="nav-container">
+                    <a href="{{ url_for('overview') }}" class="nav-link">Back</a> 
+                </nav>
+        </div>
+    </header>
+    <div class="container">
+        {% for accommodation in accommodations %}
+        <div class="accommodation-card">
+            <h3>{{ accommodation['name'] }}</h3>
+            <p>Address: {{ accommodation['address'] }}</p>
+            <p>Price: ${{ accommodation['price'] }} per night</p>
+            <p>Capacity: {{ accommodation['capacity'] }} person</p>
+            <img src="{{ url_for('static', filename='/images/bedroom.jpg') }}" alt="{{ accommodation['name'] }}" class="accommodation-image">
+            <a href="{{ url_for('book', room_name=accommodation['name'], price=accommodation['price'], capacity=accommodation['capacity']) }}" class="button-link">
+                Book Now
+            </a>
+        </div>
+        {% endfor %}
+    </div>
+</body>
+</html>
+
+

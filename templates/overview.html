@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fonteyn Holiday Park</title>
+    <link rel="stylesheet" href="/static/CSS/viewstyle.css">
+</head>
+<body>
+    <header class="header-banner">
+        <div class="header-content">
+            <h1>Fonteyn Holiday Park</h1>
+            <nav class="nav-container">
+                <a href="{{ url_for('accommodations') }}" class="nav-link">Accommodations</a>
+                <a href="{{ url_for('logout') }}" class="nav-link">Logout</a>
+            </nav>
+        </div>
+    </header>
+
+    <section id="home" class="bordered">
+        <div class="container">
+            <h2>Welcome to Fonteyn Holiday Park</h2>
+            <p>Fonteyn Holiday Parks, established as a traditional Dutch family business by Frits Fonteyn, has evolved over 50 years into an international organization. Specializing in holiday park management, the company offers accommodation, recreational facilities, and various services across its locations in the Netherlands, Belgium, and Germany.</p>
+        </div>
+    </section>
+
+    <main>
+        <section id="activities" class="bordered">
+            <div class="container">
+                <div class="activity">
+                    <img src="{{ url_for('static', filename='/images/pleaselord.jpg') }}" alt="Pool with waterslides">
+                    <div>
+                        <h2>Activities</h2>
+                        <h3>Pool, VolleyBall, MiniGolf, and Tennis</h3>
+                        <p>Experience fun and excitement with our different activities.</p>
+                        <p><strong>Opening Hours:</strong> 9:00 AM - 7:00 PM</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <section id="restaurant" class="bordered">
+        <div class="container">
+            <div class="activity">
+                <div>
+                    <h2>Restaurant</h2>
+                    <p>Indulge in delicious meals at our restaurant.</p>
+                    <p>Opening Hours: 7:00 AM - 10:00 PM</p>
+                </div>
+                <img src="{{ url_for('static', filename='/images/restaurant.jpg') }}" alt="Restaurant" class="restaurant-image">
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 Fonteyn Holiday Park. All rights reserved.</p>
+        </div>
+    </footer>
+</body>
+</html>

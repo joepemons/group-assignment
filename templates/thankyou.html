@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='CSS/thankstyle.css') }}" />
+    <title>Thank You</title>
+</head>
+<body>
+    <div class="thank-you-container">
+        <h1>Thank You!</h1>
+        <p>Your booking has been successfully placed.</p>
+
+        <!-- Booking Details Section -->
+        {% if booking %}
+        <div class="booking-details">
+            <h2>Booking Details</h2>
+            <p><strong>Room Name:</strong> {{ booking['room_name'] }}</p>
+            <p><strong>Start Date:</strong> {{ booking['start_date'] }}</p>
+            <p><strong>End Date:</strong> {{ booking['end_date'] }}</p>
+            <p><strong>Total Cost:</strong> ${{ booking['total_cost'] }}</p>
+        </div>
+        {% else %}
+        <p>No booking details available.</p>
+        {% endif %}
+
+        <!-- Back to Overview Button -->
+        <a href="{{ url_for('overview') }}" class="button-link back-button">Back to Overview</a>
+    </div>
+</body>
+</html>
+

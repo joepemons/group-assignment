@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href='/static/CSS/bookstyles.css' />
+    <title>Hotel Booking Form</title>
+</head>
+<body>
+    <h1 class="title">Hotel Booking Form</h1>
+    <form action="/book" method="post">
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" required><br><br>
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" required><br><br>
+        <label for="check_in">Check-in Date:</label>
+        <input type="date" id="check_in" name="check_in" required><br><br>
+        <label for="check_out">Check-out Date:</label>
+        <input type="date" id="check_out" name="check_out" required><br><br>
+        <input class="button" type="submit" value="Book">
+    </form>
+</body>
+</html>

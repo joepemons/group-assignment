@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Reservations</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='CSS/reservations.css') }}">
+</head>
+<body>
+    <header>
+        <h1>Your Reservations</h1>
+        <nav>
+            <a href="{{ url_for('overview') }}">Overview</a>
+            <a href="{{ url_for('logout') }}">Logout</a>
+        </nav>
+    </header>
+
+    <main>
+        <h2>Current Reservations</h2>
+        {% if reservations %}
+            <ul>
+                {% for reservation in reservations %}
+                <li>
+                    <p><strong>Date:</strong> {{ reservation['reservation_date'] }}</p>
+                    <p><strong>Time Slot:</strong> {{ reservation['time_slot'] }}</p>
+                </li>
+                {% endfor %}
+            </ul>
+        {% else %}
+            <p>You have no reservations.</p>
+        {% endif %}
+
+        <h2>Make a New Reservation</h2>
+        <form action="{{ url_for('reservations') }}" method="post">
+            <label for="reservation_date">Reservation Date:</label>
+            <input type="date" id="reservation_date" name="reservation_date" required>
+            <br>
+
+            <label for="time_slot">Time Slot:</label>
+            <input type="text" id="time_slot" name="time_slot" required>
+            <br>
+
+            <button type="submit">Reserve</button>
+        </form>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 Your Company Name</p>
+    </footer>
+</body>
+</html>

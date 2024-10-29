@@ -1,0 +1,16 @@
+{
+    "app": {
+      "secret_key": "fonteyn123",
+      "debug": true,
+      "host": "127.0.0.1",
+      "port": 80
+    },
+    "mysql": {
+      "user": "fonteyn",
+      "password": "fonteyn123",
+      "host": "localhost",
+      "database": "reservation_db",
+      "port": 3306
+    }
+  }
+  
